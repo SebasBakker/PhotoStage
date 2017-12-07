@@ -52,6 +52,5 @@ public class PhotoDisplayQuery {
 	   System.out.println("Can't create query");
    }
    return list;
-   }
-
+    }
 }

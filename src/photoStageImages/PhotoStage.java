@@ -104,9 +104,10 @@ public class PhotoStage extends JFrame{
      }
     });
   
+    //when pressed show all teh images
      button3.addActionListener(new ActionListener(){
       	 public void actionPerformed(ActionEvent e){
-           
+      	      new JTableDisplayImage().setVisible(true);
       }
       });
 	
