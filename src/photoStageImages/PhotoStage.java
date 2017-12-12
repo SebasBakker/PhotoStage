@@ -27,7 +27,7 @@ public class PhotoStage extends JFrame{
     JButton button3;
     JLabel label;
     JTextField textTag;
-    String s;
+    String filePath;
     
     //Database declarations
 	String url = "jdbc:mysql://localhost:3306/photostage";
@@ -51,7 +51,7 @@ public class PhotoStage extends JFrame{
 
 
     label = new JLabel();
-    label.setBounds(10,10,900,500);   
+    label.setBounds(10,10,250,250);   
   
   
     //Button to insert images and tag to the database
@@ -65,7 +65,7 @@ public class PhotoStage extends JFrame{
                PreparedStatement preStat = con.prepareStatement("insert into photos(fileLocation,tagName) values(?,?)");
                
                //Prepare selected image for insert to database
-               InputStream is = new FileInputStream(new File(s));
+               InputStream is = new FileInputStream(new File(filePath));
                preStat.setBlob(1,is);
                preStat.setString(2, textTag.getText());
                preStat.executeUpdate();
@@ -94,7 +94,7 @@ public class PhotoStage extends JFrame{
              File selectedFile = fileChooser.getSelectedFile();
              String path = selectedFile.getAbsolutePath();
              label.setIcon(ResizeImage(path));
-             s = path;
+             filePath = path;
               }
          
          //If the user didn't select anything print no data selected
@@ -120,7 +120,7 @@ public class PhotoStage extends JFrame{
     add(button3);
     setLayout(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setSize(700,420);
+    setSize(700,430);
     setVisible(true);
     }
     
@@ -131,6 +131,8 @@ public class PhotoStage extends JFrame{
         Image newImage = img.getScaledInstance(label.getWidth(), label.getHeight(),Image.SCALE_SMOOTH);
         ImageIcon image = new ImageIcon(newImage);
         return image;
+        
+        
     }
  
     public static void main(String[] args){
