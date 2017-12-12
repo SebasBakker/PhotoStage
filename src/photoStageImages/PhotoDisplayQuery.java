@@ -10,10 +10,17 @@ import java.util.ArrayList;
 
 
 public class PhotoDisplayQuery {
+	  static String queryVar = null;
+	  
+	  
+	 JTableDisplayImage jtableWithIm = new JTableDisplayImage();
 	
+		
+	  
 	//Create connection to database
    public Connection getConnection(){
         Connection con = null;
+        
         try {
         	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/photostage","user","password123");
         } catch (SQLException ex) {
@@ -30,12 +37,14 @@ public class PhotoDisplayQuery {
    Connection con = getConnection();
    Statement stat;
    ResultSet resSet;
+
    
    try {
 	   
 	//execute the query for the photos
    stat = con.createStatement();
-   resSet = stat.executeQuery("SELECT * FROM photos");
+   queryVar = jtableWithIm.queryModifier();
+   resSet = stat.executeQuery(queryVar);
    
    //Go through the array to get the values
    PhotoGetter pGet;
