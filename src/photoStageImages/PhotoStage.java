@@ -46,7 +46,7 @@ public class PhotoStage extends JFrame{
     button3 = new JButton("Show images");
     button3.setBounds(300, 300, 150, 40);
     
-    textTag = new JTextField("Tag");
+    textTag = new JTextField("Tag here");
     textTag.setBounds(200,350,100,20);
 
 
@@ -104,7 +104,7 @@ public class PhotoStage extends JFrame{
      }
     });
   
-    //when pressed show all teh images
+    //when pressed show all the images
      button3.addActionListener(new ActionListener(){
       	 public void actionPerformed(ActionEvent e){
       	      new JTableDisplayImage().setVisible(true);
